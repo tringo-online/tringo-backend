@@ -13,7 +13,9 @@
     "gulp-sass": "^2.2.0",
     "moment": "^2.11.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "angular-youtube-embed": "^1.1.1"
+  },
   "scripts": {
     "test": "mocha"
   },
