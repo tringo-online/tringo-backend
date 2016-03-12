@@ -1,4 +1,4 @@
-var app = angular.module('mvb', ['ngRoute','ngStorage', 'angularMoment', 'youtube-embed', 'config']);
+var app = angular.module('mvb', ['ngRoute','ngStorage', 'angularMoment', 'youtube-embed']);
 
 app.config(function($routeProvider,$httpProvider) {
     $routeProvider
