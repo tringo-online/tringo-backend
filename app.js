@@ -39,7 +39,7 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 
 app.use(cors());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname + 'public'));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -77,6 +77,8 @@ auth.passport.deserializeUser(function(user, done) {
 //   mongoose.connect('')
 // }
 
+app.use('/', routes);
+app.use('/games', games);
 app.use('/users', tokenAuthenicated, getUser, users);
 app.use('/dashboard', tokenAuthenicated, getUser, games);
 app.use('/styles', youtubeApi);
