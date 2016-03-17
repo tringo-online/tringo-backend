@@ -59,6 +59,7 @@ router.post('/', function(req, res, next){
   db.MongoClient.connect(process.env.MONGOLAB_URI, function(err, db){
     var games = db.collection('games');
     games.insert({
+      game_name: req.body.name,
       created_by: req.body.user_name,
       created_date: new Date(),
       current_players: [req.body.user_name],

@@ -44,10 +44,15 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
+app.use(function(request, response, next) {
+ response.header('Access-Control-Allow-Origin', request.headers.origin);
+ response.header('Access-Control-Allow-Headers', 'Authorization');
+ response.header('Access-Control-Allow-Credentials', true);
+ next();
+});
 
 
-
-//Passport fucking bullshit
+//Passport stuff
 
 app.use(session({
   secret:process.env.COOKIE_SECRET,
@@ -127,7 +132,7 @@ app.use(function(err, req, res, next) {
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '3333');
 app.set('port', port);
 
 /**
@@ -157,8 +162,8 @@ io.on('connection',function(socket){
     console.log(err);
   });
   socket.on('disconnect', function() {
-  console.log('Disconected');
-})
+    console.log('Disconected');
+  })
 })
 /**
  * Normalize a port into a number, string, or false.
