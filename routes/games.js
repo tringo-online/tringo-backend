@@ -23,7 +23,6 @@ function getPlayList(requestURL) {
   // Make a request for a user with a given ID
   return axios.get(requestURL)
     .then(function (response) {
-      console.log(response);
       return response;
     })
     .catch(function (response) {
@@ -32,9 +31,7 @@ function getPlayList(requestURL) {
 }
 
 function queryParser(queryParams) {
-  var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + queryParams + '%2C+vevo&type=video&key=' + process.env.apiKEY;
-  console.log("url ", url);
-  return url
+  return 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + queryParams + '%2C+vevo&type=video&key=' + process.env.apiKEY;
 }
 
 /* GET games for dashboard */

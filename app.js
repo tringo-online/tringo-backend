@@ -154,9 +154,13 @@ var io = require('socket.io')(server);
 io.on('connection',function(socket){
   console.log('Connected');
   console.log(socket.handshake.address);
-  socket.on('logData',function(data){
+  socket.on('bingo', function(data){
     console.log(data);
-
+    io.emit('game over', {winner: data})
+  });
+  socket.on('starting game', function(data){
+    console.log("starting game ", data);
+    io.emit('starting game', {playlist: data})
   });
   socket.on('error', function(err){
     console.log(err);
