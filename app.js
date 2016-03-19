@@ -22,7 +22,7 @@ var games = require('./routes/games');
 var youtubeApi = require('./routes/youtubeApi');
 var auth = require('./routes/auth');
 
-var session = require('express-session');
+// var session = require('express-session');
 
 var app = express();
 
@@ -54,14 +54,14 @@ app.use(function(request, response, next) {
 
 //Passport stuff
 
-app.use(session({
-  secret:process.env.COOKIE_SECRET,
-  resave:true,
-  saveUninitialized:true
-}));
+// app.use(session({
+//   secret:process.env.COOKIE_SECRET,
+//   resave:true,
+//   saveUninitialized:true
+// }));
 
 app.use(auth.passport.initialize());
-app.use(auth.passport.session());
+// app.use(auth.passport.session());
 
 auth.passport.serializeUser(function(user, done) {
   console.log('serializing user');
