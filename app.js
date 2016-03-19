@@ -7,7 +7,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var debug = require('debug')('bb-server:server');
-var http = require('http');
+var https = require('https');
 var cors = require('cors');
 
 var jwt = require('jsonwebtoken');
@@ -139,7 +139,7 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+var server = https.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -152,8 +152,8 @@ server.on('listening', onListening);
 var io = require('socket.io')(server);
 
 io.on('connection',function(socket){
-  console.log('Connected');
-  console.log(socket.handshake.address);
+  // console.log('Connected', params);
+  console.log("handshake ", socket.handshake);
   socket.on('bingo', function(data){
     console.log(data);
     io.emit('game over', {winner: data})
