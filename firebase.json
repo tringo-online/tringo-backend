@@ -1,0 +1,9 @@
+{
+  "firebase": "music-video-bingo",
+  "public": "/",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
