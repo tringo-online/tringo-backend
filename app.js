@@ -7,7 +7,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var debug = require('debug')('bb-server:server');
-var https = require('https');
+var http = require('http');
 var cors = require('cors');
 
 var jwt = require('jsonwebtoken');
@@ -60,19 +60,19 @@ app.use(function(request, response, next) {
 //   saveUninitialized:true
 // }));
 
-app.use(auth.passport.initialize());
+// app.use(auth.passport.initialize());
 // app.use(auth.passport.session());
 
-auth.passport.serializeUser(function(user, done) {
-  console.log('serializing user');
-  done(null, user);
-});
-
-auth.passport.deserializeUser(function(user, done) {
-  console.log('deserializing user');
-  console.log(user);
-  done(null, user);
-});
+// auth.passport.serializeUser(function(user, done) {
+//   console.log('serializing user');
+//   done(null, user);
+// });
+//
+// auth.passport.deserializeUser(function(user, done) {
+//   console.log('deserializing user');
+//   console.log(user);
+//   done(null, user);
+// });
 
 /* Dev Environment for Mongo */
 
@@ -139,7 +139,7 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-var server = https.createServer(app);
+var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
