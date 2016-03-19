@@ -7,7 +7,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var debug = require('debug')('bb-server:server');
-var https = require('https');
+var http = require('http');
 var cors = require('cors');
 
 var jwt = require('jsonwebtoken');
@@ -139,7 +139,7 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-var server = https.createServer(app);
+var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
