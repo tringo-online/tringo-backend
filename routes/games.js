@@ -32,7 +32,7 @@ function getPlayList(requestURL) {
 
 function queryParser(queryParams) {
   console.log("queryParams ", queryParams);
-  console.log("apiKEY ", apiKEY);
+  console.log("apiKEY ", process.env.apiKEY);
   return 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + queryParams + '%2C+vevo&type=video&key=' + process.env.apiKEY;
 }
 
