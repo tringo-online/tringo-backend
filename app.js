@@ -54,25 +54,25 @@ app.use(function(request, response, next) {
 
 //Passport stuff
 
-app.use(session({
-  secret:process.env.COOKIE_SECRET,
-  resave:true,
-  saveUninitialized:true
-}));
-
-app.use(auth.passport.initialize());
-app.use(auth.passport.session());
-
-auth.passport.serializeUser(function(user, done) {
-  console.log('serializing user');
-  done(null, user);
-});
-
-auth.passport.deserializeUser(function(user, done) {
-  console.log('deserializing user');
-  console.log(user);
-  done(null, user);
-});
+// app.use(session({
+//   secret:process.env.COOKIE_SECRET,
+//   resave:true,
+//   saveUninitialized:true
+// }));
+//
+// app.use(auth.passport.initialize());
+// app.use(auth.passport.session());
+//
+// auth.passport.serializeUser(function(user, done) {
+//   console.log('serializing user');
+//   done(null, user);
+// });
+//
+// auth.passport.deserializeUser(function(user, done) {
+//   console.log('deserializing user');
+//   console.log(user);
+//   done(null, user);
+// });
 
 /* Dev Environment for Mongo */
 
