@@ -81,8 +81,7 @@ router.delete('/:id', function(req, res, next){
 
 router.post('/songs', function(req, res, next) {
   console.log("body of get songs", req.body);
-  getSongsRequest(req.body.playlistId)
-  .then(function(data) {
+  getSongsRequest(req.body.playlistId).then(function(data) {
     console.log("data in get songs route", data);
     res.send(data)
   }).catch(function(err){
