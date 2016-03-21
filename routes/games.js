@@ -102,6 +102,7 @@ function getPlayListRequest(query){
 }
 
 function getSongsRequest(playlistId){
+  console.log("playlistId in get songs ", playlistId);
   return axios.get('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=25&playlistId=' + playlistId + '&key=' + process.env.apiKEY)
   .then(function(response){
     console.log("response from inside getPlayList", response);
