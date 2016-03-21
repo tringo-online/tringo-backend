@@ -52,9 +52,7 @@ router.get('/', function(req, res, next){
 });
 
 router.post('/', function(req, res, next){
-  console.log("body of get playlist", req.body);
   getPlayListRequest(req.body.query).then(function(response) {
-    console.log("response ", response);
     res.send(response);
   });
   db.MongoClient.connect(process.env.MONGOLAB_URI, function(err, db){
@@ -80,6 +78,7 @@ router.delete('/:id', function(req, res, next){
   })
 })
 
+
 router.get('/songs', function(req, res, next) {
   console.log("body of get songs", req.body);
   getSongsRequest(req.body.playlistId)
@@ -91,20 +90,24 @@ router.get('/songs', function(req, res, next) {
 });
 
 function getPlayListRequest(query){
-  return new Promise(function(resolve,reject){
-    unirest.get('https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + query + '&type=playlist&key=' + youtubeKey)
-    .end(function(response){
-      resolve(response);
-    })
+  return axios.get('https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + query + '&type=playlist&key=' + process.env.apiKEY)
+  .then(function(response){
+    console.log("response from inside getPlayList", response);
+    return response;
+  })
+  .catch(function(response) {
+    return response;
   })
 }
 
 function getSongsRequest(playlistId){
-  return new Promise(function(resolve,reject){
-    unirest.get(('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=25&playlistId=' + playlistId + '&key=' + youtubeKey))
-    .end(function(response){
-      resolve(response);
-    })
+  return axios.get('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=25&playlistId=' + playlistId + '&key=' + process.env.apiKEY)
+  .then(function(response){
+    console.log("response from inside getPlayList", response);
+    return response;
+  })
+  .catch(function(response) {
+    return response;
   })
 }
 
