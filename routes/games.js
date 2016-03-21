@@ -100,7 +100,7 @@ function getPlayListRequest(query){
 
 function getSongsRequest(playlistId){
   return new Promise(function(resolve,reject){
-    unirest.get(('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=25&playlistId=' + playlistId '&key=' + youtubeKey))
+    unirest.get(('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=25&playlistId=' + playlistId + '&key=' + youtubeKey))
     .end(function(response){
       resolve(response);
     })
