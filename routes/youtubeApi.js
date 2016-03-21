@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
 
 function getRequest(query){
   return new Promise(function(resolve,reject){
-    unirest.get('https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + "Billboard+Top+Songs+2016" + 'type=video&key=' + youtubeKey)
+    unirest.get('https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + "Billboard+Top+Songs+2016" + 'type=playlist&key=' + youtubeKey)
     .end(function(response){
       resolve(response);
     })
