@@ -54,6 +54,7 @@ router.get('/', function(req, res, next){
 router.post('/', function(req, res, next){
   console.log("body of get playlist", req.body);
   getPlayListRequest(req.body.query).then(function(response) {
+    console.log("response ", response);
     res.send(response);
   });
   db.MongoClient.connect(process.env.MONGOLAB_URI, function(err, db){
