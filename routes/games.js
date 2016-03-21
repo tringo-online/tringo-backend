@@ -79,7 +79,7 @@ router.delete('/:id', function(req, res, next){
 })
 
 
-router.get('/songs', function(req, res, next) {
+router.post('/songs', function(req, res, next) {
   console.log("body of get songs", req.body);
   getSongsRequest(req.body.playlistId)
   .then(function(data) {
