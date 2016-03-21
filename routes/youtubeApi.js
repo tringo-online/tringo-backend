@@ -18,13 +18,9 @@ router.get('/', function(req, res, next) {
 
 function getRequest(query){
   return new Promise(function(resolve,reject){
-    unirest.get('https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + query + '&type=playlist&key=' + youtubeKey)
-    .then(function(playlist) {
-      console.log("playlist data ", playlist);
-      unirest.get('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=25&playlistId=' + playlist.items[0].id.playlistId '&key=' + youtubeKey)
-      .end(function(response){
-        resolve(response);
-      })
+    unirest.get('https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + query + 'type=video&key=' + youtubeKey)
+    .end(function(response){
+      resolve(response);
     })
   })
 }
