@@ -83,7 +83,8 @@ router.get('/songs', function(req, res, next) {
   console.log("body of get songs", req.body);
   getSongsRequest(req.body.playlistId)
   .then(function(data) {
-    res.send(data.body)
+    console.log("data in get songs route", data);
+    res.send(data)
   }).catch(function(err){
     res.send(err)
   })
